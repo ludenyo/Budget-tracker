@@ -11,6 +11,7 @@ const balanceEl = document.getElementById('balance');
 const monthFilter = document.getElementById('month-filter');
 const clearFilterBtn = document.getElementById('clear-filter');
 const tabBtns = document.querySelectorAll('.tab-btn');
+const logoutBtn = document.getElementById('logout-btn');
 
 function saveTransactions() {
     localStorage.setItem('transactions', JSON.stringify(transactions));
@@ -224,6 +225,10 @@ function renderIncomeExpenseChart() {
 tabBtns.forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
+
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', logout);
+}
 
 transactionForm.addEventListener('submit', addTransaction);
 transactionList.addEventListener('click', e => {
